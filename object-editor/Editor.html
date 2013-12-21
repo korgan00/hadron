@@ -12,20 +12,37 @@
 		//////////////////////////////////////////// -->
 		<div id="topMenu" class="Panel">
 			<input type="button" id="buttonFile" class="TopMenu" value="File" />
-			<input type="button" id="buttonMetadata" class="TopMenu" value="Metadata" />		
+			<input type="button" id="buttonMetadata" class="TopMenu" value="Object Editor" onclick="displayMetaPanel()" />		
 		</div>
 		<!--////////////////////////////////////////////
 		////////////////////TOOLS MENU//////////////////
 		//////////////////////////////////////////// -->
 		<div id="contentBody">
-			<div id="tools" class="Panel"></div>
+			<div id="tools" class="Panel">
+			
+			</div>
+	  		<div id="layers" class="Panel">
 	  		
-	  		<div id="layers" class="Panel"></div>
+	  		</div>
   		</div>
-  		<div id="canvasWrapper" class="AbsoluteDynamicWrapper">
-  			<div id="window" class="Panel">
-	  			<div id="anchor" class="AnchorBar"></div>
-				<canvas id='canvas' class="Canvas" width='600' height='600'></canvas>
+ 		<!--////////////////////////////////////////////
+		////////////////////WORK AREA///////////////////
+		//////////////////////////////////////////// -->
+  		<div id="objectEditorWrapper" class="AbsoluteDynamicWrapper">
+  			<div id="objectEditorWindow" class="Window">
+	  			<div id="objectEditorTitleBar" class="TitleBar"
+	  					onmousedown="startDragWindow('objectEditorWrapper')"
+	  					onmouseup="stopDragWindow()"
+	  					onmousemove="dragWindow()">
+	  				<span class="TitleBarText">Object Editor</span>
+	  				<input type="button" id="objectEditorCloseButton" class="CloseButton" value="X" onclick="displayMetaPanel()" />
+	  			</div>
+	  			<div id="objectEditorContentPanel" class="EditorContentPanel">
+	  				<input type="button" id="test1" value="Test1"/>
+	  				<input type="button" id="test2" value="Test2"/>
+	  				<input type="button" id="test3" value="Test3"/>
+	  				<input type="button" id="test4" value="Test4"/>
+	  			</div>
 			</div>
 			<div id="infoBarSimulator" class="InfoBar"></div>
 		</div>

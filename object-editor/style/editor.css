@@ -39,18 +39,10 @@ input.TopMenu {
 	border: 0px;
 }
 input.TopMenu:HOVER {
-	height: 100%;
-	width: auto;
-	padding: 0px 10px 0px 10px;
-	border: 0px;
 	background-color: #888;
 	color: #FFF;
 }
 input.TopMenu:ACTIVE {
-	height: 100%;
-	width: auto;
-	padding: 0px 10px 0px 10px;
-	border: 0px;
 	background-color: #888;
 	color: #000;
 }
@@ -66,29 +58,77 @@ input.TopMenu:ACTIVE {
 }
 
 /****************************************
- **************** CANVAS ****************
+ **************** WORK AREA**************
  ****************************************/
-#canvasWrapper.AbsoluteDynamicWrapper{
+.AbsoluteDynamicWrapper.Displayed {
+	display: block;
+}
+.AbsoluteDynamicWrapper{
+	display: block;
+}
+#objectEditorWrapper.AbsoluteDynamicWrapper{
 	position: absolute;
 	height: auto;
 	width: auto;
 	top: 60px;
 	left: 225px;
 }
-#window{
+.Window{
 	border: 1px #888 solid;
 }
-#anchor.AnchorBar{
+.TitleBar{
 	position: relative;
 	height: 25px;
 	width: 100%;
+	min-width: 170px;
 	background-color: #666;
 	border-bottom: 1px #AAA solid;
+	text-align: justify;
 }
-#canvas{
+.TitleBarText{
+	font-family: sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFF;
+	margin: 5px;
+	line-height: 25px;
+}
+.MetaPanel{
 	background-color: #FDD;
 }
+.CloseButton {
+	height: 21px;
+	width: auto;
+	padding: 0px 5px;
+	border-radius: 3px;
+	background-color: #F02727;
+	border: solid 1px blanchedalmond;
+	float: right;
+	margin: 2px;
+}
+.CloseButton:HOVER{
+	background-color: #D22222;
+	color: #FFF;	
+}
+.CloseButton:ACTIVE{
+	background-color: #D22222;
+	color: #000;
+}
+.EditorContentPanel input{
+	height: 30px;
+	width: 170px;
+	display: list-item;
+	border: 1px solid;
+}
 
+.EditorContentPanel input:HOVER  {
+	background-color: #888;
+	color: #FFF;
+}
+.EditorContentPanel input:ACTIVE  {
+	background-color: #888;
+	color: #000;
+}
 
 /****************************************
  **************** LAYERS ****************

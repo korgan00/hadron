@@ -1,8 +1,8 @@
 var draggingWindow = null;
 var currentX = 0;
 var currentY = 0;
-var initWindowX = 0;
-var initWindowY = 0;
+var offsetX = 0;
+var offsetY = 0;
 
 
 function displayMetaPanel(){
@@ -23,8 +23,12 @@ function stopDragWindow(){
 }
 
 function startDragWindow(elemId){
+	var evt = window.event;
 	draggingWindow = document.getElementById(elemId);
   window.addEventListener('mousemove', dragWindow, true);
+  var rect = draggingWindow.getBoundingClientRect();
+  offsetX = evt.clientX - rect.left;
+  offsetY = evt.clientY - rect.top;
 }
 
 function dragWindow(e){
@@ -32,8 +36,8 @@ function dragWindow(e){
     var div = draggingWindow;
     if (div !== null) {
 	  div.style.position = 'absolute';
-	  div.style.top = evt.clientY + 'px';
-	  div.style.left = evt.clientX + 'px';
+	  div.style.top = (evt.clientY - offsetY) + 'px';
+	  div.style.left = (evt.clientX - offsetX) + 'px';
     }
 }
 /*

@@ -64,7 +64,7 @@ input.TopMenu:ACTIVE {
 	display: block;
 }
 .AbsoluteDynamicWrapper{
-	display: block;
+	display: none;
 }
 #objectEditorWrapper.AbsoluteDynamicWrapper{
 	position: absolute;
@@ -84,6 +84,7 @@ input.TopMenu:ACTIVE {
 	background-color: #666;
 	border-bottom: 1px #AAA solid;
 	text-align: justify;
+	cursor: move;
 }
 .TitleBarText{
 	font-family: sans-serif;
@@ -92,6 +93,10 @@ input.TopMenu:ACTIVE {
 	color: #FFF;
 	margin: 5px;
 	line-height: 25px;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	cursor: inherit;
 }
 .MetaPanel{
 	background-color: #FDD;

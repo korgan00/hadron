@@ -5,8 +5,18 @@
 	<link rel="stylesheet" type="text/css" href="style/editor.css">
 </head>
 <body>
+	<script type="text/javascript" src="js/editor.js" ></script>
 	<div class="BodyWrapper">
-		<div id="topMenu" class="Panel"></div>
+		<!--////////////////////////////////////////////
+		////////////////////TOP MENU////////////////////
+		//////////////////////////////////////////// -->
+		<div id="topMenu" class="Panel">
+			<input type="button" id="buttonFile" class="TopMenu" value="File" />
+			<input type="button" id="buttonMetadata" class="TopMenu" value="Metadata" />		
+		</div>
+		<!--////////////////////////////////////////////
+		////////////////////TOOLS MENU//////////////////
+		//////////////////////////////////////////// -->
 		<div id="contentBody">
 			<div id="tools" class="Panel"></div>
 	  		
@@ -17,9 +27,11 @@
 	  			<div id="anchor" class="AnchorBar"></div>
 				<canvas id='canvas' class="Canvas" width='600' height='600'></canvas>
 			</div>
-			<div id="infoBarSimulator" class="NavigationBar"></div>
+			<div id="infoBarSimulator" class="InfoBar"></div>
 		</div>
-  		<div id="infoBar" class="NavigationBar"> x: 187 | y: 203</div>
+  		<div id="infoBar" class="InfoBar">
+  			<p class="test">x: 187 | y: 203 · Test Info</p>
+		</div>
     </div>
 </body>
 </html>

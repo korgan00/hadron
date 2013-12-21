@@ -9,6 +9,7 @@
 html, body{
 	height: 100%;
 	width: 100%;
+	font-size: 12px;
 }
 .BodyWrapper{
 	height: 100%;
@@ -27,9 +28,31 @@ html, body{
  ****************************************/
 
 #topMenu.Panel{
-	height: 100px;
+	height: 25px;
 	clear: both;
 	max-width: 100%;
+}
+input.TopMenu {
+	height: 100%;
+	width: auto;
+	padding: 0px 10px 0px 10px;
+	border: 0px;
+}
+input.TopMenu:HOVER {
+	height: 100%;
+	width: auto;
+	padding: 0px 10px 0px 10px;
+	border: 0px;
+	background-color: #888;
+	color: #FFF;
+}
+input.TopMenu:ACTIVE {
+	height: 100%;
+	width: auto;
+	padding: 0px 10px 0px 10px;
+	border: 0px;
+	background-color: #888;
+	color: #000;
 }
 
 /****************************************
@@ -49,7 +72,7 @@ html, body{
 	position: absolute;
 	height: auto;
 	width: auto;
-	top: 125px;
+	top: 60px;
 	left: 225px;
 }
 #window{
@@ -80,23 +103,30 @@ html, body{
 /****************************************
  ************ NAVIGATION BAR ************
  ****************************************/
-#infoBar.NavigationBar{
+#infoBar.InfoBar{
 	position: fixed;
 	bottom: 0px;
 	width: 100%;
 	height: 20px;
+	max-height: 20px;
 	background-color: #333;
 	opacity: 0.85;
 	color: #EEE;
 	padding: 0px 20px;
-	font-family: courier;
+	font-family: sans-serif, serif;
+	line-height: 14px;	
 }
-#infoBarSimulator.NavigationBar{
+#infoBarSimulator.InfoBar{
 	position: relative;
 	bottom: 0px;
 	clear: both;
 	width: 100%;
 	height: 20px;
+}
+p.test {
+	margin: 3px 0px;
+	vertical-align: middle;
+	line-height: 14px;
 }
 /**************************************
  *********** GRAPHIC DEBUG ************

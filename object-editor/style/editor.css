@@ -21,6 +21,7 @@ html, body{
 	position: relative;
 	background-color: #DDD;
 	border: #AAA 1px solid;
+	box-shadow: 2px 2px 4px #777;
 }
 
 /****************************************
@@ -75,16 +76,31 @@ input.TopMenu:ACTIVE {
 }
 .Window{
 	border: 1px #888 solid;
+	box-shadow: 3px 3px 10px #888888;
 }
 .TitleBar{
 	position: relative;
 	height: 25px;
 	width: 100%;
 	min-width: 170px;
-	background-color: #666;
 	border-bottom: 1px #AAA solid;
 	text-align: justify;
 	cursor: move;
+	background: #888888; /* Old browsers */
+	background: -moz-linear-gradient(top,  #888888 0%, #666666 50%, #444444 51%,
+			#666666 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,
+			#888888), color-stop(50%,#666666), color-stop(51%,#444444), color-stop(100%,#666666)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #888888 0%,#666666 50%,#444444 51%,
+			#666666 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #888888 0%,#666666 50%,#444444 51%,
+			#666666 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #888888 0%,#666666 50%,#444444 51%,
+			#666666 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #888888 0%,#666666 50%,#444444 51%,
+			#666666 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#888888',
+			 endColorstr='#666666',GradientType=0 ); /* IE6-9 */
 }
 .TitleBarText{
 	font-family: sans-serif;
@@ -110,6 +126,7 @@ input.TopMenu:ACTIVE {
 	border: solid 1px blanchedalmond;
 	float: right;
 	margin: 2px;
+	font-weight: bold;
 }
 .CloseButton:HOVER{
 	background-color: #D22222;

@@ -77,6 +77,7 @@ input.TopMenu:ACTIVE {
 .Window{
 	border: 1px #888 solid;
 	box-shadow: 3px 3px 10px #888888;
+	border-radius: 4px;
 }
 .TitleBar{
 	position: relative;
@@ -101,11 +102,13 @@ input.TopMenu:ACTIVE {
 			#666666 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#888888',
 			 endColorstr='#666666',GradientType=0 ); /* IE6-9 */
+	border-radius: 3px;
 }
 .TitleBarText{
 	font-family: sans-serif;
 	font-size: 14px;
 	font-weight: bold;
+	text-shadow: #000 2px 2px;
 	color: #FFF;
 	margin: 5px;
 	line-height: 25px;

@@ -14,7 +14,6 @@ window.onload = addListeners();
 function addListeners(){
     //document.getElementById('elemId').addEventListener('mousedown', startDragWindow, false);
     window.addEventListener('mouseup', stopDragWindow, false);
-
 }
 
 function stopDragWindow(){

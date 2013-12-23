@@ -77,7 +77,8 @@ input.TopMenu:ACTIVE {
 .Window{
 	border: 1px #888 solid;
 	box-shadow: 3px 3px 10px #888888;
-	border-radius: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
 }
 .TitleBar{
 	position: relative;
@@ -87,22 +88,43 @@ input.TopMenu:ACTIVE {
 	border-bottom: 1px #AAA solid;
 	text-align: justify;
 	cursor: move;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 	background: #888888; /* Old browsers */
-	background: -moz-linear-gradient(top,  #888888 0%, #666666 50%, #444444 51%,
+	background: -moz-linear-gradient(top,  
+			#888888 0%, 
+			#666666 50%, 
+			#444444 51%,
 			#666666 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,
-			#888888), color-stop(50%,#666666), color-stop(51%,#444444), color-stop(100%,#666666)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #888888 0%,#666666 50%,#444444 51%,
+	background: -webkit-gradient(linear, left top, left bottom, 
+			color-stop(0%, #888888), 
+			color-stop(50%,#666666), 
+			color-stop(51%,#444444), 
+			color-stop(100%,#666666)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  
+			#888888 0%,
+			#666666 50%,
+			#444444 51%,
 			#666666 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #888888 0%,#666666 50%,#444444 51%,
+	background: -o-linear-gradient(top,  
+			#888888 0%,
+			#666666 50%,
+			#444444 51%,
 			#666666 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #888888 0%,#666666 50%,#444444 51%,
+	background: -ms-linear-gradient(top,  
+			#888888 0%,
+			#666666 50%,
+			#444444 51%,
 			#666666 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #888888 0%,#666666 50%,#444444 51%,
+	background: linear-gradient(to bottom,  
+			#888888 0%,
+			#666666 50%,
+			#444444 51%,
 			#666666 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#888888',
-			 endColorstr='#666666',GradientType=0 ); /* IE6-9 */
-	border-radius: 3px;
+	filter: progid:DXImageTransform.Microsoft.gradient(
+				startColorstr='#888888',
+				endColorstr='#666666',
+				GradientType=0 ); /* IE6-9 */
 }
 .TitleBarText{
 	font-family: sans-serif;
@@ -168,25 +190,25 @@ input.TopMenu:ACTIVE {
 /****************************************
  ************ NAVIGATION BAR ************
  ****************************************/
-#infoBar.InfoBar{
-	position: fixed;
-	bottom: 0px;
+.InfoBar{
 	width: 100%;
+	max-width: 100%;
 	height: 20px;
 	max-height: 20px;
+	bottom: 0px;
+}
+#infoBar.InfoBar{
+	position: fixed;
 	background-color: #333;
 	opacity: 0.85;
-	color: #EEE;
 	padding: 0px 20px;
+	color: #EEE;
 	font-family: sans-serif, serif;
 	line-height: 14px;	
 }
 #infoBarSimulator.InfoBar{
 	position: relative;
-	bottom: 0px;
 	clear: both;
-	width: 100%;
-	height: 20px;
 }
 p.test {
 	margin: 3px 0px;

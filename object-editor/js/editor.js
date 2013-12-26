@@ -35,8 +35,8 @@ function dragWindow(e){
     var div = draggingWindow;
     if (div !== null) {
 	  div.style.position = 'absolute';
-	  div.style.top = (evt.clientY - offsetY) + 'px';
-	  div.style.left = (evt.clientX - offsetX) + 'px';
+	  div.style.top = Math.max((evt.clientY - offsetY), 0) + 'px';
+	  div.style.left = Math.max((evt.clientX - offsetX), 0) + 'px';
     }
 }
 /*

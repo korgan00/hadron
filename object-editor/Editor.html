@@ -3,16 +3,19 @@
 <head>
 	<title>Hadron Object Editor</title>
 	<link rel="stylesheet" type="text/css" href="style/editor.css">
+	<script defer data-main="../object-editor/main" 
+			src="../hadron/lib/require.js" type="text/javascript"></script>
 </head>
 <body>
-	<script type="text/javascript" src="js/editor.js" ></script>
+	<!-- <script type="text/javascript" src="js/editor.js" ></script> -->
 	<div class="BodyWrapper">
 		<!--////////////////////////////////////////////
 		////////////////////TOP MENU////////////////////
 		//////////////////////////////////////////// -->
 		<div id="topMenu" class="Panel">
-			<input type="button" id="buttonFile" class="TopMenu" value="File" />
-			<input type="button" id="buttonMetadata" class="TopMenu" value="Object Editor" onclick="displayMetaPanel()" />		
+			<input type="button" id="buttonFile" class="TopMenu" value="File"/>
+			<input type="button" id="buttonMetadata" class="TopMenu" 
+					value="Object Editor" onclick="enviromentFuncs.displayMetaPanel()" />		
 		</div>
 		<!--////////////////////////////////////////////
 		////////////////////TOOLS MENU//////////////////
@@ -30,12 +33,10 @@
 		//////////////////////////////////////////// -->
   		<div id="objectEditorWrapper" class="AbsoluteDynamicWrapper">
   			<div id="objectEditorWindow" class="Window">
-	  			<div id="objectEditorTitleBar" class="TitleBar"
-	  					onmousedown="startDragWindow('objectEditorWrapper')"
-	  					onmouseup="stopDragWindow()"
-	  					onmousemove="dragWindow()">
+	  			<div id="objectEditorTitleBar" class="TitleBar">
 	  				<span class="TitleBarText">Object Editor</span>
-	  				<input type="button" id="objectEditorCloseButton" class="CloseButton" value="X" onclick="displayMetaPanel()" />
+	  				<input type="button" id="objectEditorCloseButton" 
+	  						class="CloseButton" value="X" />
 	  			</div>
 	  			<div id="objectEditorContentPanel" class="EditorContentPanel">
 	  				<input type="button" id="test1" value="Test1"/>

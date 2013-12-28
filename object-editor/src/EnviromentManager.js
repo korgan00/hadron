@@ -1,3 +1,4 @@
+
 define(function(require) {
   
   var ObjectEditorEngine = require('object-editor-engine/Engine');
@@ -19,6 +20,7 @@ define(function(require) {
    ********************/
   EnviromentManager.prototype.initialize = function() {
     console.log("Enviroment -> RUN!");
+    this._addEventListeners();
     // this.engine.initialize();
     // this.engine.start();
   };
@@ -66,6 +68,10 @@ define(function(require) {
     $(window).off('mousemove');
   };
 
+  EnviromentManager.prototype._addEventListeners = function() {
+    document.getElementById('objectEditorCloseButton').
+          addEventListener('click', this.displayMetaPanel.bind(this), false);
+  }
   /**
    * End class
    */

@@ -209,6 +209,7 @@ input.TopMenu:ACTIVE {
 #infoBarSimulator.InfoBar{
 	position: relative;
 	clear: both;
+	visibility: hidden;
 }
 p.test {
 	margin: 3px 0px;

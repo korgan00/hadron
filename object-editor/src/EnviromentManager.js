@@ -13,6 +13,7 @@ define(function(require) {
     this._draggingPanel = null;
     this._offsetPoint = [ 0, 0 ];
     
+    this._imageList = {};
   }
   
   /********************
@@ -31,13 +32,17 @@ define(function(require) {
     $(window).mouseup( this._stopDragWindow.bind(this) );
   };
   
-  EnviromentManager.prototype.displayMetaPanel = function() {
-    $('#objectEditorWrapper').toggleClass('Displayed');
-  };
-  
   /*********************
    * PRIVATE FUNCTIONS *
    *********************/
+
+  EnviromentManager.prototype._displayMetaPanel = function() {
+    $('#objectEditorWrapper').toggleClass('Displayed');
+  };
+
+  EnviromentManager.prototype._createNewObject = function() {
+    $('#objectEditorWrapper').toggleClass('Displayed');
+  };
   
   EnviromentManager.prototype._startDragWindow = function(evt) {
     //var evt = window.event || e;
@@ -68,10 +73,50 @@ define(function(require) {
     $(window).off('mousemove');
   };
 
+  EnviromentManager.prototype._importImages = function(e) {
+    var evt = window.event || e;
+    var input = evt.target;
+    var i = 0;
+    var me = this;
+    
+    for (i = 0; i < input.files.length; i++){
+      var url = input.files[i];
+      var img = new Image;
+      img.src = URL.createObjectURL(url);
+      img.imageUrlName = url.name;
+      
+      img.onload = function() {
+        if (! me._imageList[this.imageUrlName]){
+          me._imageList[this.imageUrlName] = this;
+          me._addImageSample(this);
+        }
+      };
+    }
+  };
+  
+  EnviromentManager.prototype._addImageSample = function(img) {
+    var ul = document.getElementById("imageSamplesList");
+    var li = document.createElement('li');
+    var span = document.createElement('span');
+    
+    ul.appendChild(li);
+    li.appendChild(img);
+    li.appendChild(span);
+    span.appendChild(document.createTextNode(img.imageUrlName));
+  };
+  
   EnviromentManager.prototype._addEventListeners = function() {
     document.getElementById('objectEditorCloseButton').
-          addEventListener('click', this.displayMetaPanel.bind(this), false);
-  }
+          addEventListener('click', this._displayMetaPanel.bind(this), false);
+    document.getElementById('buttonMetadata').
+          addEventListener('click', this._displayMetaPanel.bind(this), false);
+    document.getElementById('buttonNew').
+          addEventListener('click', this._createNewObject.bind(this), false);
+    document.getElementById('toolsImageInput').
+          addEventListener('change', this._importImages.bind(this), false);
+  };
+  
+  
   /**
    * End class
    */

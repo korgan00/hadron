@@ -10,6 +10,7 @@ html, body{
 	height: 100%;
 	width: 100%;
 	font-size: 12px;
+  font-family: sans-serif;
 }
 .BodyWrapper{
 	height: 100%;
@@ -33,6 +34,78 @@ html, body{
 	clear: both;
 	max-width: 100%;
 }
+
+.MenuBar {
+	list-style-type: none;
+  padding: 0px 10px 0px 10px;
+  height: 25px;
+}
+.MenuBar li {
+  display: inline-block;
+  list-style: none;
+  position:relative;
+  height: 15px;
+  padding: 5px;
+  line-height: 15px;
+}
+
+.MenuBar li:hover > a,
+.MenuBar li:hover > a:visited {
+	color: #EEE;
+}
+
+.MenuBar li > a:hover, 
+.MenuBar li > a:active,
+.MenuBar li:hover > a:hover, 
+.MenuBar li:hover > a:active {
+  color: #EEE;
+  text-decoration: none;
+}
+
+.MenuBar li > a:visited,
+.MenuBar li > a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.MenuBar li:hover {
+  background-color: #888;
+}
+
+.MenuBar ul{
+  background: #CCC;
+	left: 0px;
+  margin: 0px 10px 0px 0px;
+  padding: 0px 10px 0px 20px;
+	opacity: 0;
+	height: 0px;
+  display: none;
+	position: absolute;
+	top: 25px;
+  transition: opacity .1s ease .2s;
+  z-index: 255;
+  
+  border: 2px solid #999;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px #888;
+}
+
+.MenuBar ul ul{
+  left: 100%;
+  top: 0px;
+}
+.MenuBar ul li{
+  width: 100%;
+}
+
+.MenuBar li:hover > ul { 
+	opacity: 1; 
+	display: block;
+  height: auto;
+}
+
 input.TopMenu {
 	height: 100%;
 	width: auto;
@@ -56,6 +129,110 @@ input.TopMenu:ACTIVE {
 	float: left;
 	height: 500px;
 	width: 200px;
+}
+
+.PanelButtonsArea{
+  position: relative;
+  margin: 5px 5px 3px 10px;
+  border-bottom: 2px solid #999;
+}
+
+.FileInputWrapper{
+	margin: 0px 0px 0px auto;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  right: 0px;
+}
+
+.FileInputWrapper span{
+  display: block !important;
+  position: relative;
+  width: 23px;
+  height: 23px;
+  background-color: #999;
+  border: #333 1px solid;
+  border-radius: 15px;
+  font-size: 21px;
+	font-weight: bold;
+	text-shadow: #BBB 1px 1px;
+  vertical-align: middle;
+  text-align: center;
+  box-shadow: 1px 1px 2px #888;
+  right: 0px;
+  
+  
+  transition: background-color 0.3s ease-in-out, 
+              box-shadow 0.3s ease-in-out;
+  -webkit-transition: background-color 0.3s ease-in-out, 
+                      box-shadow 0.3s ease-in-out;
+}
+
+.FileInputWrapper:hover span {
+  box-shadow: 1px 1px 2px #666;
+  background-color: #AAA;
+  text-shadow: #CCC 1px 1px;
+  
+	transition: background-color 0.3s ease-in-out, 
+	            box-shadow 0.3s ease-in-out;
+	-webkit-transition: background-color 0.3s ease-in-out, 
+	                    box-shadow 0.3s ease-in-out;
+}
+
+.FileInputWrapper input {
+  margin: 1px;
+  display: block;
+  width: 23px;
+  height: 23px;
+  -moz-opacity: 0.00;
+  opacity: 0.00;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=0);
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+/*Image list*/
+.ImageList {
+  display: table;
+  margin: 5px 0px 0px 5px;
+  width: 180px;
+  border-spacing: 5px;
+}
+.ImageList li {
+	display: table-row;
+  width: 180px;
+}
+.ImageList li:hover {
+  background-color: #EEE;
+}
+.ImageList li:first-child span{
+  font-weight: bold;
+  border-bottom: 1px solid #111;
+  height: 20px;
+}
+.ImageList li:hover:first-child{
+  background-color: transparent;
+}
+.ImageList li:first-child span:first-child{
+  max-width: 50px;
+  width: 50px;
+}
+.ImageList li img{
+  display: table-cell;
+  margin: auto auto;
+  max-width: 50px;
+  max-height: 50px;
+}
+.ImageList li span{
+  display: table-cell;
+  width: 110px;
+  max-width: 110px;
+  overflow: hidden;
+  font-size: 13px;
+  vertical-align: middle;
 }
 
 /****************************************

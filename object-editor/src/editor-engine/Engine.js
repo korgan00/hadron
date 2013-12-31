@@ -9,32 +9,38 @@ define(function(require) {
 	 * Constructor
 	 */
 	function Engine() {
-		this.TIME_INTERVAL = 16; //ms
-		this.on = false;
+		this.TIME_INTERVAL = 100; //ms
+		this._on = false;
+		this._canvas = null;
 		
-		this.evManager = new EventManager();
-		this.render = new Render();
-		this.viewModel = new ViewModel();
+		this._evManager = new EventManager();
+		this._render = new Render();
+		this._viewModel = new ViewModel();
 	}
 	
 	/********************************
 	 * 		PUBLIC FUNCTIONS 		*
 	 ********************************/
-	Engine.prototype.initialize = function (){
+	Engine.prototype.initialize = function (canvas){
+	  this._canvas = canvas;
 		this._configureEvents();
+		
+		this._render.setCanvas(this._canvas);
+		
+		
 		setInterval(this._step.bind(this), this.TIME_INTERVAL);
 	};
 	
 	Engine.prototype.stop = function (){
-		this.on = false;
+		this._on = false;
 	};
 	
 	Engine.prototype.start = function (){
-		this.on = true;
+		this._on = true;
 	};
 
 	Engine.prototype.renderize = function (){
-		if (!this.on) this._step();
+		if (!this._on) this._step();
 	};
 	
 	/********************************
@@ -45,10 +51,10 @@ define(function(require) {
 	};
 
 	Engine.prototype._step = function(){
-		if (this.on) {
-			this.evManager.step();
-			this.viewModel.step();
-			this.render.step();
+		if (this._on) {
+			this._evManager.step();
+			this._viewModel.step();
+			this._render.step();
 		}
 	};
 	

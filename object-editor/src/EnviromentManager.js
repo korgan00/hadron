@@ -14,6 +14,8 @@ define(function(require) {
     this._offsetPoint = [ 0, 0 ];
     
     this._imageList = {};
+    
+    this._canvas = null;
   }
   
   /********************
@@ -22,8 +24,11 @@ define(function(require) {
   EnviromentManager.prototype.initialize = function() {
     console.log("Enviroment -> RUN!");
     this._addEventListeners();
-    // this.engine.initialize();
-    // this.engine.start();
+    this._canvas = $("#mainCanvas")[0];
+    this._engine.initialize(this._canvas);
+    this._engine.start();
+    
+    this._windowResize();
   };
   
   EnviromentManager.prototype.addDragablePanel = function(anchorId, windowId) {
@@ -105,6 +110,12 @@ define(function(require) {
     span.appendChild(document.createTextNode(img.imageUrlName));
   };
   
+  EnviromentManager.prototype._windowResize = function(){
+    this._canvas.height = window.innerHeight;
+    this._canvas.width = window.innerWidth;
+    //console.log("height: " + evt.target.innerHeight + " | width: " + evt.target.innerWidth);
+  }
+  
   EnviromentManager.prototype._addEventListeners = function() {
     document.getElementById('objectEditorCloseButton').
           addEventListener('click', this._displayMetaPanel.bind(this), false);
@@ -114,6 +125,7 @@ define(function(require) {
           addEventListener('click', this._createNewObject.bind(this), false);
     document.getElementById('toolsImageInput').
           addEventListener('change', this._importImages.bind(this), false);
+    window.onresize = this._windowResize.bind(this);
   };
   
   

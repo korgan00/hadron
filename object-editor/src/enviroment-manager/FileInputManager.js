@@ -15,24 +15,31 @@ define(function(require) {
   /********************************
    *       PUBLIC FUNCTIONS       *
    ********************************/
-  // ImageImporter.prototype.
   
   FileInputManager.prototype.setLoadFunction = function (func){
     this._onLoadFunc = func;
   };
   
-  FileInputManager.prototype.addElementManaged = function (elemId){
+  FileInputManager.prototype.addElementManagedById = function (elemId){
     document.getElementById(elemId)
         .addEventListener('change', this._loadFile.bind(this), false);
   };
   
-  FileInputManager.prototype.addDropTargetElement = function (elemId){
+  FileInputManager.prototype.addDropTargetElementById = function (elemId){
     document.getElementById(elemId)
         .addEventListener('dragover', this._dragOver.bind(this), false);
     document.getElementById(elemId)
         .addEventListener('drop', this._dropFile.bind(this), false);
   };
   
+  FileInputManager.prototype.addElementManagedByRef = function (elem){
+    elem.addEventListener('change', this._loadFile.bind(this), false);
+  };
+  
+  FileInputManager.prototype.addDropTargetElementByRef = function (elem){
+    elem.addEventListener('dragover', this._dragOver.bind(this), false);
+    elem.addEventListener('drop', this._dropFile.bind(this), false);
+  };
   
   /********************************
    *       PRIVATE FUNCTIONS      *
@@ -56,7 +63,9 @@ define(function(require) {
     var evt = window.event || e;
     var files = files || evt.target.files;
     var file = null;
-    var fileURL = null
+    var fileURL = null;
+    var img = null;
+    var reader = null;
 
     for (var i = 0; i < files.length; i++){
       file = files[i];
@@ -67,18 +76,33 @@ define(function(require) {
           && this.isImageManager) 
         alert(file.name + " is not an image file.");
   
-      window.URL = window.URL || window.webkitURL;
-  
-      fileURL = window.URL.createObjectURL(file);
       
       var lf = this._onLoadFunc;
-      var img = new Image();
-      img.src = fileURL;
-      img.name = file.name;
       
-      img.onload = function(){
-          lf(this);
-      };
+      if (this.isImageManager){
+        img = new Image();
+        
+        window.URL = window.URL || window.webkitURL;
+    
+        fileURL = window.URL.createObjectURL(file);
+        
+        img.src = fileURL;
+        img.name = file.name;
+        
+        img.onload = function(ev){
+          var evt = window.event || ev;
+          lf(evt.target);
+        };
+      }else{
+        reader = new FileReader();
+        reader.readAsText(file, "UTF-8");
+        reader.onload = function (evt) {
+          lf(evt.target.result);
+        }
+        reader.onerror = function (evt) {
+          alert("error reading file");
+        }
+      }
     }
 
   };

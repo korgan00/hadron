@@ -12,6 +12,7 @@ define(function(require) {
   function EnviromentManager() {
     this._engine = new ObjectEditorEngine();
     this._imgInputManager = new FileInputManager();
+    this._objInputManager = new FileInputManager();
     
     this._draggingPanel = null;
     this._offsetPoint = [ 0, 0 ];
@@ -52,6 +53,15 @@ define(function(require) {
     $('#objectEditorWrapper').toggleClass('Displayed');
   };
   
+  EnviromentManager.prototype._openObjectFile = function() {
+      var input = document.getElementById("menuOptFileOpenInput");
+      input.click();
+  };
+  EnviromentManager.prototype._openImageFile = function() {
+    var input = document.getElementById("toolsImageInput");
+    input.click();
+  };
+
   EnviromentManager.prototype._startDragWindow = function(evt) {
     //var evt = window.event || e;
     var rect;
@@ -95,28 +105,45 @@ define(function(require) {
     this._imageList[img.name] = img;
   };
   
-  EnviromentManager.prototype._windowResize = function(){
+  EnviromentManager.prototype._loadObjectByFile = function(obj) {
+    console.log(obj);
+    var r = confirm("You will lose all unsaved progress...");
+    if (r) alert("Has dicho si pero no esta manejado, joete!");
+    else alert("Has dicho no pero tampoco esta manejado, joete!");
+  }
+  
+  EnviromentManager.prototype._windowResize = function() {
     this._canvas.height = window.innerHeight;
     this._canvas.width = window.innerWidth;
     //console.log("height: " + evt.target.innerHeight + " | width: " + evt.target.innerWidth);
-  }
+  };
   
   EnviromentManager.prototype._addEventListeners = function() {
     document.getElementById('objectEditorCloseButton').
           addEventListener('click', this._displayMetaPanel.bind(this), false);
     document.getElementById('buttonMetadata').
           addEventListener('click', this._displayMetaPanel.bind(this), false);
-    document.getElementById('buttonNew').
+    document.getElementById('menuOptFileNew').
           addEventListener('click', this._createNewObject.bind(this), false);
-    
-    this._imgInputManager = new FileInputManager();
+    document.getElementById('menuOptFileOpen').
+          addEventListener('click', this._openObjectFile.bind(this), false);
+    document.getElementById('toolsImageFakeInput').
+          addEventListener('click', this._openImageFile.bind(this), false);
+
     this._imgInputManager.setLoadFunction(this._addImageSample.bind(this));
-    this._imgInputManager.addElementManaged('toolsImageInput');
-    this._imgInputManager.addDropTargetElement('toolsImageList');
+    this._imgInputManager.addElementManagedById('toolsImageInput');
+    this._imgInputManager.addDropTargetElementById('toolsImageList');
     this._imgInputManager.isImageManager = true;
+
+    this._objInputManager.setLoadFunction(this._loadObjectByFile.bind(this));
+    this._objInputManager.addElementManagedById('menuOptFileOpenInput');
+    this._objInputManager.addDropTargetElementByRef(window);
+    this._objInputManager.isImageManager = false;
     
-//    document.getElementById('toolsImageInput').
-//          addEventListener('change', this._importImages.bind(this), false);
+    // Este es para evitar que si arrastra en otro lado se carge la imagen
+    // a pantalla completa. Se podría cambiar para que simplemente no hiciera
+    // nada.
+    
     window.onresize = this._windowResize.bind(this);
   };
   

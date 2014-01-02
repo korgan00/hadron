@@ -56,8 +56,6 @@ html, body{
   display: inline-block;
   list-style: none;
   position:relative;
-  height: 15px;
-  padding: 5px;
   line-height: 15px;
 }
 
@@ -80,6 +78,8 @@ html, body{
   font-size: 14px;
   text-decoration: none;
   white-space: nowrap;
+  padding: 5px;
+  display: block;
 }
 
 .MenuBar li:hover {
@@ -113,7 +113,6 @@ html, body{
 .MenuBar ul{
   background: #CCC;
 	left: 0px;
-  margin: 0px 10px 0px 0px;
   padding: 0px 10px 0px 20px;
 	opacity: 0;
 	height: 0px;
@@ -134,6 +133,8 @@ html, body{
 }
 .MenuBar ul li{
   width: 100%;
+  padding-right: 10px;
+  display: list-item;
 }
 
 .MenuBar li:hover > ul { 
@@ -142,7 +143,9 @@ html, body{
   height: auto;  
 }
 
-
+.HiddenInput {
+	display: none;
+}
 /****************************************
  **************** TOOLS *****************
  ****************************************/
@@ -183,6 +186,7 @@ html, body{
   text-align: center;
   box-shadow: 1px 1px 2px #888;
   right: 0px;
+  cursor: pointer;
   
   
   transition: background-color 0.3s ease-in-out, 
@@ -191,7 +195,7 @@ html, body{
                       box-shadow 0.3s ease-in-out;
 }
 
-.FileInputWrapper:hover span {
+.FileInputWrapper span:hover {
   box-shadow: 1px 1px 2px #666;
   background-color: #AAA;
   text-shadow: #CCC 1px 1px;
@@ -200,20 +204,11 @@ html, body{
 	            box-shadow 0.3s ease-in-out;
 	-webkit-transition: background-color 0.3s ease-in-out, 
 	                    box-shadow 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .FileInputWrapper input {
-  margin: 1px;
-  display: block;
-  width: 23px;
-  height: 23px;
-  -moz-opacity: 0.00;
-  opacity: 0.00;
-  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=0);
-  overflow: hidden;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  display: none;
 }
 
 /*Image list*/

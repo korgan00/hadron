@@ -18,15 +18,15 @@
 				<li>  
 				  <a href="#1"  id="buttonFile">File</a>
 				  <ul>
-            <li><a  id="buttonNew" href="#1">New</a></li>
+            <li><a id="menuOptFileNew" href="#1">New</a></li>
             <li><a href="#1">Open &#9658;</a>
 		          <ul>
-		            <li><a href="#1">New</a></li>
-		            <li><a href="#1">Open  &#9658;</a>
-		              <ul>
-		                <li><a href="#1">New</a></li>
-		                <li><a href="#1">Open</a></li>
-		              </ul>
+                <li><a href="#1">c:/tpm/tpm.hobj</a></li>
+                <li><a href="#1">c:/tpm/pene.hobj</a></li>
+                <li><a href="#1">c:/tpm/pepe.hobj</a></li>
+                <li><hr /></li>
+		            <li><a id="menuOptFileOpen" href="#1">file...</a>
+		                <input type="file" id="menuOptFileOpenInput" class="HiddenInput">
 		            </li>
 		          </ul>
 		        </li>
@@ -52,7 +52,7 @@
       
         <div id="toolsActions" class="PanelButtonsArea">			 
 				 <div id="imageInputWrapper" class="FileInputWrapper">
-				   <span>+</span>
+				   <span id="toolsImageFakeInput">+</span>
 				   <input id="toolsImageInput" type="file" multiple>
 				 </div>
 				</div>

@@ -1,7 +1,9 @@
 
 define(function(require) {
-  
+
   var ObjectEditorEngine = require('object-editor-engine/Engine');
+  var FileInputManager = 
+            require('object-editor/enviroment-manager/FileInputManager');
   var $ = require('jquery');
   
   /**
@@ -9,6 +11,7 @@ define(function(require) {
    */
   function EnviromentManager() {
     this._engine = new ObjectEditorEngine();
+    this._imgInputManager = new FileInputManager();
     
     this._draggingPanel = null;
     this._offsetPoint = [ 0, 0 ];
@@ -77,29 +80,10 @@ define(function(require) {
     this._draggingPanel = null;
     $(window).off('mousemove');
   };
-
-  EnviromentManager.prototype._importImages = function(e) {
-    var evt = window.event || e;
-    var input = evt.target;
-    var i = 0;
-    var me = this;
-    
-    for (i = 0; i < input.files.length; i++){
-      var url = input.files[i];
-      var img = new Image;
-      img.src = URL.createObjectURL(url);
-      img.imageUrlName = url.name;
-      
-      img.onload = function() {
-        if (! me._imageList[this.imageUrlName]){
-          me._imageList[this.imageUrlName] = this;
-          me._addImageSample(this);
-        }
-      };
-    }
-  };
   
   EnviromentManager.prototype._addImageSample = function(img) {
+    if (this._imageList[img.name]) return;
+    
     var ul = document.getElementById("imageSamplesList");
     var li = document.createElement('li');
     var span = document.createElement('span');
@@ -107,7 +91,8 @@ define(function(require) {
     ul.appendChild(li);
     li.appendChild(img);
     li.appendChild(span);
-    span.appendChild(document.createTextNode(img.imageUrlName));
+    span.appendChild(document.createTextNode(img.name));
+    this._imageList[img.name] = img;
   };
   
   EnviromentManager.prototype._windowResize = function(){
@@ -123,8 +108,15 @@ define(function(require) {
           addEventListener('click', this._displayMetaPanel.bind(this), false);
     document.getElementById('buttonNew').
           addEventListener('click', this._createNewObject.bind(this), false);
-    document.getElementById('toolsImageInput').
-          addEventListener('change', this._importImages.bind(this), false);
+    
+    this._imgInputManager = new FileInputManager();
+    this._imgInputManager.setLoadFunction(this._addImageSample.bind(this));
+    this._imgInputManager.addElementManaged('toolsImageInput');
+    this._imgInputManager.addDropTargetElement('toolsImageList');
+    this._imgInputManager.isImageManager = true;
+    
+//    document.getElementById('toolsImageInput').
+//          addEventListener('change', this._importImages.bind(this), false);
     window.onresize = this._windowResize.bind(this);
   };
   

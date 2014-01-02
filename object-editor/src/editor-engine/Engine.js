@@ -9,7 +9,7 @@ define(function(require) {
 	 * Constructor
 	 */
 	function Engine() {
-		this.TIME_INTERVAL = 100; //ms
+		this.TIME_INTERVAL = 1000; //ms
 		this._on = false;
 		this._canvas = null;
 		

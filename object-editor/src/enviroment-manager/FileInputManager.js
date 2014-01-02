@@ -63,49 +63,58 @@ define(function(require) {
     var evt = window.event || e;
     var files = files || evt.target.files;
     var file = null;
-    var fileURL = null;
-    var img = null;
-    var reader = null;
 
     for (var i = 0; i < files.length; i++){
       file = files[i];
       
       // Image validation
-      if (file.type !== '' 
+      if (file.name !== '' 
           && !file.type.match('image/*')
           && this.isImageManager) 
         alert(file.name + " is not an image file.");
-  
       
-      var lf = this._onLoadFunc;
       
-      if (this.isImageManager){
-        img = new Image();
-        
-        window.URL = window.URL || window.webkitURL;
-    
-        fileURL = window.URL.createObjectURL(file);
-        
-        img.src = fileURL;
-        img.name = file.name;
-        
-        img.onload = function(ev){
-          var evt = window.event || ev;
-          lf(evt.target);
-        };
-      }else{
-        reader = new FileReader();
-        reader.readAsText(file, "UTF-8");
-        reader.onload = function (evt) {
-          lf(evt.target.result);
-        }
-        reader.onerror = function (evt) {
-          alert("error reading file");
-        }
-      }
+      if (this.isImageManager) this._manageImg(file);
+      else this._manageFile(file);
+      
     }
 
   };
+  
+  FileInputManager.prototype._manageFile = function (file){
+    var lf = this._onLoadFunc;
+    var reader = null;
+    
+    reader = new FileReader();
+    reader.readAsText(file, "UTF-8");
+    reader.onload = function (evt) {
+      lf(evt.target.result);
+    }
+    reader.onerror = function (evt) {
+      alert("error reading file");
+    }
+  };
+  
+  FileInputManager.prototype._manageImg = function (file){
+    var lf = this._onLoadFunc;
+    var img = null;
+    var fileURL = null;
+    
+    img = new Image();
+    
+    window.URL = window.URL || window.webkitURL;
+
+    fileURL = window.URL.createObjectURL(file);
+    
+    img.src = fileURL;
+    img.name = file.name;
+    
+    img.onload = function(ev){
+      var evt = window.event || ev;
+      lf(evt.target);
+    };
+  };
+  
   
   /**
    * End class

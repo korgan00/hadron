@@ -1,6 +1,7 @@
 
 define(function(require) {
   
+  "use strict";
   /**
    * Constructor
    */
@@ -60,45 +61,46 @@ define(function(require) {
   };
   
   FileInputManager.prototype._loadFile = function(e, files){
-    var evt = window.event || e;
-    var files = files || evt.target.files;
-    var file = null;
+    var evt = window.event || e,
+        file = null,
+        i;
+    files = files || evt.target.files;
 
-    for (var i = 0; i < files.length; i++){
+    for (i = 0; i < files.length; i++){
       file = files[i];
       
       // Image validation
       if (file.name !== '' 
           && !file.type.match('image/*')
-          && this.isImageManager) 
+          && this.isImageManager) {
         alert(file.name + " is not an image file.");
+      }
       
-      
-      if (this.isImageManager) this._manageImg(file);
-      else this._manageFile(file);
+      if (this.isImageManager) { this._manageImg(file);}
+      else { this._manageFile(file);}
       
     }
 
   };
   
   FileInputManager.prototype._manageFile = function (file){
-    var lf = this._onLoadFunc;
-    var reader = null;
+    var lf = this._onLoadFunc,
+        reader = null;
     
     reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     reader.onload = function (evt) {
       lf(evt.target.result);
-    }
+    };
     reader.onerror = function (evt) {
       alert("error reading file");
-    }
+    };
   };
   
   FileInputManager.prototype._manageImg = function (file){
-    var lf = this._onLoadFunc;
-    var img = null;
-    var fileURL = null;
+    var lf = this._onLoadFunc,
+        img = null,
+        fileURL = null;
     
     img = new Image();
     

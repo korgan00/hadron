@@ -1,6 +1,6 @@
 
 define(function(require) {
-	
+	"use strict";
 	/**
 	 * Constructor
 	 */
@@ -9,13 +9,13 @@ define(function(require) {
 	}
 	
 	/********************************
-	 * 		PUBLIC FUNCTIONS 		*
+	 *       PUBLIC FUNCTIONS       *
 	 ********************************/
 	Model.prototype.step = function(){
 		console.log("Model  - STEP!");
 	};
 	/********************************
-	 * 		PRIVATE FUNCTIONS 		*
+	 *      PRIVATE FUNCTIONS       *
 	 ********************************/
 
 	
